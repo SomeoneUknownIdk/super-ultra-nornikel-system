@@ -1,0 +1,171 @@
+# Газетир RU↔EN (ЭТАП 2). Каноны с алиасами.
+# Поля записи:
+#   type, canon,
+#   aliases[]         — RU-варианты/аббревиатуры (регистр учитывается ORTH-ярусом при наличии заглавных/латиницы),
+#   aliases_en[]      — EN, lowercase-матч (НЕ клади сюда короткие омонимы: co/u/mg/ag — ловят мусор),
+#   symbols[]         — символы элементов, ORTH регистрозависимо + word-boundary (Co, Fe — не co/fe),
+#   symbols_guarded[] — символы-омонимы англ. слов (S/As/V): матчатся ТОЛЬКО рядом с числом/%/г-т
+#                       или в списке через запятую с другими символами,
+#   aliases_infl[]    — косвенные падежи топонимов (LEMMA-ярус, для Facility; гео-триггер сохраняется),
+#   geo               — для Facility.
+# type ∈ {Material, Phase, Process, Equipment, Facility, Condition, Domain, Organization}
+
+# ---------------- Materials ----------------
+- {type: Material, canon: медь,      aliases: [медь],       aliases_en: [copper], symbols: [Cu]}
+- {type: Material, canon: никель,    aliases: [никель],     aliases_en: [nickel], symbols: [Ni]}
+- {type: Material, canon: кобальт,   aliases: [кобальт],    aliases_en: [cobalt], symbols: [Co]}
+- {type: Material, canon: золото,    aliases: [золото],     aliases_en: [gold],   symbols: [Au]}
+- {type: Material, canon: серебро,   aliases: [серебро],    aliases_en: [silver], symbols: [Ag]}
+- {type: Material, canon: платина,   aliases: [платина],    aliases_en: [platinum], symbols: [Pt]}
+- {type: Material, canon: палладий,  aliases: [палладий],   aliases_en: [palladium], symbols: [Pd]}
+- {type: Material, canon: родий,     aliases: [родий],      aliases_en: [rhodium], symbols: [Rh]}
+- {type: Material, canon: МПГ,       aliases: [МПГ, ЭПГ],   aliases_en: [pgm, platinum group metals]}
+- {type: Material, canon: сульфат,   aliases: [сульфат],    aliases_en: [sulfate, sulphate]}
+- {type: Material, canon: хлорид,    aliases: [хлорид],     aliases_en: [chloride]}
+- {type: Material, canon: серная кислота, aliases: [серная кислота], aliases_en: [sulfuric acid, sulphuric acid]}
+- {type: Material, canon: гипс,      aliases: [гипс],       aliases_en: [gypsum]}
+- {type: Material, canon: халькопирит, aliases: [халькопирит], aliases_en: [chalcopyrite]}
+- {type: Material, canon: глинозём,  aliases: [глинозём, глинозем], aliases_en: [alumina]}
+- {type: Material, canon: магний,    aliases: [магний],     aliases_en: [magnesium], symbols: [Mg]}
+- {type: Material, canon: титан,     aliases: [титан],      aliases_en: [titanium], symbols: [Ti]}
+- {type: Material, canon: уран,      aliases: [уран],       aliases_en: [uranium], symbols: [U]}
+- {type: Material, canon: цинк,      aliases: [цинк],       aliases_en: [zinc], symbols: [Zn]}
+- {type: Material, canon: свинец,    aliases: [свинец],     aliases_en: [lead], symbols: [Pb]}
+- {type: Material, canon: руда,      aliases: [руда],       aliases_en: [ore]}
+# (задача п.4) «концентрат» — это Phase (продукт обогащения), а не Material:
+# как Material он крал числовые значения содержаний у элементов.
+- {type: Phase, canon: концентрат, aliases: [концентрат], aliases_en: [concentrate]}
+
+# --- Materials: спектральные/породообразующие элементы (задача п.4) ---
+- {type: Material, canon: кальций,   aliases: [кальций],    aliases_en: [calcium],   symbols: [Ca]}
+- {type: Material, canon: кислород,  aliases: [кислород],   aliases_en: [oxygen],    symbols_guarded: [O]}
+- {type: Material, canon: кремний,   aliases: [кремний],    aliases_en: [silicon],   symbols: [Si]}
+- {type: Material, canon: алюминий,  aliases: [алюминий],   aliases_en: [aluminium, aluminum], symbols: [Al]}
+- {type: Material, canon: калий,     aliases: [калий],      aliases_en: [potassium], symbols: [K]}
+- {type: Material, canon: натрий,    aliases: [натрий],     aliases_en: [sodium],    symbols: [Na]}
+
+# --- Materials: частотные металлы/элементы как СЛОВА + символы (задача п.2/п.3) ---
+- {type: Material, canon: железо,    aliases: [железо],     aliases_en: [iron],       symbols: [Fe]}
+- {type: Material, canon: сера,      aliases: [сера],       aliases_en: [sulfur, sulphur], symbols_guarded: [S]}
+- {type: Material, canon: селен,     aliases: [селен],      aliases_en: [selenium],   symbols: [Se]}
+- {type: Material, canon: мышьяк,    aliases: [мышьяк],     aliases_en: [arsenic],    symbols_guarded: [As]}
+- {type: Material, canon: марганец,  aliases: [марганец],   aliases_en: [manganese],  symbols: [Mn]}
+- {type: Material, canon: хром,      aliases: [хром],       aliases_en: [chromium],   symbols: [Cr]}
+- {type: Material, canon: молибден,  aliases: [молибден],   aliases_en: [molybdenum], symbols: [Mo]}
+- {type: Material, canon: олово,     aliases: [олово],      aliases_en: [tin],        symbols: [Sn]}
+- {type: Material, canon: висмут,    aliases: [висмут],     aliases_en: [bismuth],    symbols: [Bi]}
+- {type: Material, canon: кадмий,    aliases: [кадмий],     aliases_en: [cadmium],    symbols: [Cd]}
+- {type: Material, canon: теллур,    aliases: [теллур],     aliases_en: [tellurium],  symbols: [Te]}
+- {type: Material, canon: ванадий,   aliases: [ванадий],    aliases_en: [vanadium],   symbols_guarded: [V]}
+- {type: Material, canon: литий,     aliases: [литий],      aliases_en: [lithium],    symbols: [Li]}
+- {type: Material, canon: рений,     aliases: [рений],      aliases_en: [rhenium],    symbols: [Re]}
+
+# --- Materials: минералы (задача п.3) ---
+- {type: Material, canon: пирротин,   aliases: [пирротин],   aliases_en: [pyrrhotite]}
+- {type: Material, canon: пентландит, aliases: [пентландит], aliases_en: [pentlandite]}
+# Сульфиды-формулы: чтобы «3,6% FeS»/«Ni3S2» привязывались к соединению, а не к
+# ближайшему распознанному реагенту (аддитивно — только распознавание).
+- {type: Material, canon: сульфид железа,  aliases: [сульфид железа, FeS],  aliases_en: [iron sulfide]}
+- {type: Material, canon: пирит,           aliases: [пирит, FeS2],          aliases_en: [pyrite]}
+- {type: Material, canon: халькозин,       aliases: [халькозин, Cu2S],      aliases_en: [chalcocite]}
+- {type: Material, canon: ковеллин,        aliases: [ковеллин, CuS],        aliases_en: [covellite]}
+- {type: Material, canon: сульфид никеля,  aliases: [сульфид никеля, Ni3S2, NiS], aliases_en: [nickel sulfide]}
+- {type: Material, canon: галенит,         aliases: [галенит, PbS],         aliases_en: [galena]}
+- {type: Material, canon: сфалерит,        aliases: [сфалерит, ZnS],        aliases_en: [sphalerite]}
+- {type: Material, canon: магнетит,   aliases: [магнетит],   aliases_en: [magnetite]}
+
+# ---------------- Phases ----------------
+- {type: Phase, canon: штейн,      aliases: [штейн],      aliases_en: [matte]}
+- {type: Phase, canon: файнштейн,  aliases: [файнштейн],  aliases_en: [white matte, bessemer matte]}
+- {type: Phase, canon: шлак,       aliases: [шлак],       aliases_en: [slag]}
+- {type: Phase, canon: раствор,    aliases: [раствор],    aliases_en: [solution]}
+- {type: Phase, canon: католит,    aliases: [католит],    aliases_en: [catholyte]}
+- {type: Phase, canon: анолит,     aliases: [анолит],     aliases_en: [anolyte]}
+- {type: Phase, canon: кек,        aliases: [кек],        aliases_en: [cake]}
+- {type: Phase, canon: огарок,     aliases: [огарок],     aliases_en: [calcine]}
+
+# ---------------- Processes ----------------
+- {type: Process, canon: флотация,             aliases: [флотация],             aliases_en: [flotation]}
+- {type: Process, canon: выщелачивание,        aliases: [выщелачивание],        aliases_en: [leaching]}
+- {type: Process, canon: электроэкстракция,    aliases: [электроэкстракция],    aliases_en: [electrowinning]}
+- {type: Process, canon: электролиз,           aliases: [электролиз],           aliases_en: [electrolysis]}
+- {type: Process, canon: электрорафинирование, aliases: [электрорафинирование], aliases_en: [electrorefining]}
+- {type: Process, canon: плавка,               aliases: [плавка],               aliases_en: [smelting]}
+- {type: Process, canon: взвешенная плавка,    aliases: [взвешенная плавка],    aliases_en: [flash smelting]}
+- {type: Process, canon: конвертирование,      aliases: [конвертирование],      aliases_en: [converting]}
+- {type: Process, canon: обжиг,                aliases: [обжиг],                aliases_en: [roasting]}
+- {type: Process, canon: обеднение шлаков,     aliases: [обеднение шлаков, обеднение шлака], aliases_en: [slag cleaning, slag depletion]}
+- {type: Process, canon: магнитная сепарация,  aliases: [магнитная сепарация],  aliases_en: [magnetic separation]}
+- {type: Process, canon: гравитационное обогащение, aliases: [гравитационное обогащение], aliases_en: [gravity concentration, gravity separation]}
+- {type: Process, canon: измельчение,          aliases: [измельчение],          aliases_en: [comminution, grinding]}
+- {type: Process, canon: кучное выщелачивание,  aliases: [кучное выщелачивание],  aliases_en: [heap leaching]}
+- {type: Process, canon: автоклавное выщелачивание, aliases: [автоклавное выщелачивание], aliases_en: [pressure leaching, autoclave leaching]}
+- {type: Process, canon: хлорное выщелачивание, aliases: [хлорное выщелачивание], aliases_en: [chloride leaching]}
+- {type: Process, canon: биовыщелачивание,     aliases: [биовыщелачивание],     aliases_en: [bioleaching]}
+- {type: Process, canon: аффинаж,              aliases: [аффинаж],              aliases_en: [refining, affination]}
+- {type: Process, canon: обессоливание,        aliases: [обессоливание],        aliases_en: [desalination]}
+- {type: Process, canon: нейтрализация,        aliases: [нейтрализация],        aliases_en: [neutralization, neutralisation]}
+- {type: Process, canon: десульфуризация,      aliases: [десульфуризация],      aliases_en: [desulfurization, desulphurization]}
+# --- Processes: частотные (задача п.3) ---
+- {type: Process, canon: цементация,           aliases: [цементация],           aliases_en: [cementation]}
+- {type: Process, canon: экстракция,           aliases: [экстракция, жидкостная экстракция], aliases_en: [solvent extraction, extraction]}
+- {type: Process, canon: реэкстракция,         aliases: [реэкстракция],         aliases_en: [stripping, re-extraction]}
+- {type: Process, canon: сорбция,              aliases: [сорбция],              aliases_en: [sorption, adsorption]}
+- {type: Process, canon: автоклавное окисление, aliases: [автоклавное окисление], aliases_en: [pressure oxidation, autoclave oxidation]}
+- {type: Process, canon: флотоконцентрирование, aliases: [флотоконцентрирование], aliases_en: [flotation concentration]}
+
+# ---------------- Equipment ----------------
+- {type: Equipment, canon: автоклав,        aliases: [автоклав],        aliases_en: [autoclave]}
+- {type: Equipment, canon: печь Ванюкова,   aliases: [печь Ванюкова, ПЖВ], aliases_en: [vanyukov furnace]}
+- {type: Equipment, canon: ПВП,             aliases: [ПВП, печь взвешенной плавки], aliases_en: [flash furnace, fluidized bed furnace, flash smelting furnace]}
+- {type: Equipment, canon: конвертер,       aliases: [конвертер, конвертер Пирса-Смита, конвертер Пирса–Смита], aliases_en: [converter, peirce-smith converter]}
+- {type: Equipment, canon: электролизёр,    aliases: [электролизёр, электролизер, электролизная ванна, ванна электроэкстракции], aliases_en: [electrolyzer, electrolytic cell]}
+- {type: Equipment, canon: флотомашина,     aliases: [флотомашина, флотационная машина], aliases_en: [flotation machine, flotation cell]}
+- {type: Equipment, canon: шаровая мельница, aliases: [шаровая мельница], aliases_en: [ball mill]}
+- {type: Equipment, canon: мельница SAG,    aliases: [мельница SAG, SAG-мельница], aliases_en: [sag mill]}
+- {type: Equipment, canon: трубчатая печь,  aliases: [трубчатая печь],  aliases_en: [tube furnace, rotary kiln]}
+- {type: Equipment, canon: электропечь,     aliases: [электропечь, электрическая печь], aliases_en: [electric furnace]}
+- {type: Equipment, canon: сгуститель,      aliases: [сгуститель],      aliases_en: [thickener]}
+- {type: Equipment, canon: гидроциклон,     aliases: [гидроциклон],     aliases_en: [hydrocyclone]}
+- {type: Equipment, canon: магнитный сепаратор, aliases: [магнитный сепаратор], aliases_en: [magnetic separator]}
+# --- Equipment: частотное (задача п.3) ---
+- {type: Equipment, canon: экстрактор,      aliases: [экстрактор, смеситель-отстойник], aliases_en: [extractor, mixer-settler]}
+- {type: Equipment, canon: фильтр-пресс,    aliases: [фильтр-пресс, фильтр пресс], aliases_en: [filter press]}
+- {type: Equipment, canon: вельц-печь,      aliases: [вельц-печь, вельцпечь], aliases_en: [waelz kiln]}
+
+# ---------------- Facility / Deposit (+geo) ----------------
+- {type: Facility, canon: Талнах,             geo: RU, aliases: [Талнах],             aliases_infl: [Талнаха, Талнахе, Талнахом], aliases_en: [talnakh]}
+- {type: Facility, canon: Скалистый,          geo: RU, aliases: [Скалистый],          aliases_infl: [Скалистого, Скалистом, Скалистому, Скалистым], aliases_en: [skalisty]}
+- {type: Facility, canon: Комсомольский,      geo: RU, aliases: [Комсомольский],      aliases_infl: [Комсомольского, Комсомольском, Комсомольскому, Комсомольским], aliases_en: [komsomolsky]}
+- {type: Facility, canon: Надеждинский завод, geo: RU, aliases: [Надеждинский завод, Надеждинский металлургический завод, Надеждинский], aliases_en: [nadezhda plant, nadezhdinsky]}
+- {type: Facility, canon: КГМК,               geo: RU, aliases: [КГМК, Кольская ГМК], aliases_en: [kola mmc]}
+- {type: Facility, canon: Эрдэнэт,            geo: MN, aliases: [Эрдэнэт],            aliases_en: [erdenet]}
+- {type: Facility, canon: Бушвельд,           geo: ZA, aliases: [Бушвельд],           aliases_en: [bushveld]}
+- {type: Facility, canon: Стилуотер,          geo: US, aliases: [Стилуотер],          aliases_en: [stillwater]}
+- {type: Facility, canon: Long Harbour,       geo: CA, aliases: [Лонг-Харбор],        aliases_en: [long harbour, long harbor]}
+
+# ---------------- Conditions ----------------
+- {type: Condition, canon: холодный климат,            aliases: [холодный климат],            aliases_en: [cold climate]}
+- {type: Condition, canon: Заполярье,                 aliases: [Заполярье, заполярье],       aliases_en: [arctic]}
+- {type: Condition, canon: глубокие горизонты,        aliases: [глубокие горизонты],         aliases_en: [deep horizons]}
+- {type: Condition, canon: замкнутый цикл,            aliases: [замкнутый цикл],             aliases_en: [closed loop, closed cycle]}
+- {type: Condition, canon: опытно-промышленный масштаб, aliases: [опытно-промышленный масштаб, опытно-промышленная установка, опытно-промышленный], aliases_en: [pilot scale, pilot plant]}
+# --- Conditions: качественные режимы (задача п.3) ---
+- {type: Condition, canon: окислительный режим,        aliases: [окислительный режим, окислительная атмосфера, окислительные условия], aliases_en: [oxidizing conditions, oxidative regime]}
+- {type: Condition, canon: восстановительный режим,    aliases: [восстановительный режим, восстановительная атмосфера, восстановительные условия], aliases_en: [reducing conditions, reductive regime]}
+- {type: Condition, canon: кучное выщелачивание,       aliases: [кучное выщелачивание, кучный режим], aliases_en: [heap leaching]}
+- {type: Condition, canon: автоклавный режим,          aliases: [автоклавный режим, автоклавные условия], aliases_en: [autoclave conditions]}
+
+# ---------------- Domains ----------------
+- {type: Domain, canon: гидрометаллургия,     aliases: [гидрометаллургия, гидрометаллургический], aliases_en: [hydrometallurgy]}
+- {type: Domain, canon: пирометаллургия,      aliases: [пирометаллургия, пирометаллургический], aliases_en: [pyrometallurgy]}
+- {type: Domain, canon: обогащение,           aliases: [обогащение, обогатительный], aliases_en: [beneficiation, mineral processing]}
+- {type: Domain, canon: экология,             aliases: [экология, экологический], aliases_en: [ecology, environmental]}
+- {type: Domain, canon: геомеханика,          aliases: [геомеханика, геомеханический], aliases_en: [geomechanics]}
+- {type: Domain, canon: переработка отходов,  aliases: [переработка отходов, утилизация отходов], aliases_en: [waste processing, waste utilization]}
+
+# ---------------- Organizations ----------------
+- {type: Organization, canon: Гипроникель, geo: RU, aliases: [Гипроникель], aliases_en: [gipronickel]}
+- {type: Organization, canon: МИСиС,       aliases: [МИСиС, НИТУ МИСиС], aliases_en: [misis]}
+- {type: Organization, canon: Механобр,    aliases: [Механобр],    aliases_en: [mekhanobr]}
+- {type: Organization, canon: Норникель,   aliases: [Норникель, Норильский никель], aliases_en: [nornickel, norilsk nickel]}

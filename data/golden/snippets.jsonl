@@ -1,0 +1,23 @@
+{"text": "остаточное содержание сульфат-ионов составило 9,4 мг/л", "expect": [{"metric": "содержание", "material": "сульфат", "value_low": 9.4, "value_high": 9.4, "comparator": "=", "unit_canon": "mg_L"}]}
+{"text": "снизили концентрацию сульфата до 200 мг/л", "expect": [{"metric": "концентрация", "material": "сульфат", "value_high": 200, "comparator": "<=", "unit_canon": "mg_L"}]}
+{"text": "плотность тока 200–240 А/м2 представляет компромисс", "expect": [{"metric": "плотность тока", "value_low": 200, "value_high": 240, "unit_canon": "A_m2"}]}
+{"text": "равновесие достигается при 1250–1350 °С", "expect": [{"metric": "температура", "value_low": 1250, "value_high": 1350, "unit_canon": "degC"}]}
+{"text": "содержание МПГ в шлаке составляет более 10 г/т", "expect": [{"metric": "содержание", "material": "МПГ", "phase": "шлак", "value_low": 10, "comparator": ">", "unit_canon": "g_t"}]}
+{"text": "исходный сульфатный раствор содержал 0,705 г/л никеля", "expect": [{"metric": "содержание", "material": "никель", "value_low": 705, "value_high": 705, "unit_canon": "mg_L", "unit_raw": "г/л"}]}
+{"text": "требуемый сухой остаток не более 1000 мг/дм3", "expect": [{"metric": "остаток", "value_high": 1000, "comparator": "<=", "unit_canon": "mg_L"}]}
+{"text": "извлечение никеля составило 95,2 %", "expect": [{"metric": "извлечение", "material": "никель", "value_low": 95.2, "value_high": 95.2, "unit_canon": "pct"}]}
+{"text": "при 22,5 °С остаточное содержание снизилось", "expect": [{"metric": "температура", "value_low": 22.5, "value_high": 22.5, "unit_canon": "degC"}]}
+{"text": "процесс ISA достигает плотности тока 330 А/м2", "expect": [{"metric": "плотность тока", "value_low": 330, "value_high": 330, "unit_canon": "A_m2"}]}
+{"text": "производительность установки от 100 т/сут", "expect": [{"metric": "производительность", "value_low": 100, "comparator": ">=", "unit_canon": "t_day"}]}
+{"text": "концентрация хлоридов не более 300 мг/л", "expect": [{"metric": "концентрация", "material": "хлорид", "value_high": 300, "comparator": "<=", "unit_canon": "mg_L"}]}
+{"text": "температура процесса 60÷80 °С", "expect": [{"metric": "температура", "value_low": 60, "value_high": 80, "unit_canon": "degC"}]}
+{"text": "поддерживали рН 2,5 в электролите", "expect": [{"metric": "pH", "value_low": 2.5, "value_high": 2.5, "unit_canon": "pH"}]}
+{"text": "концентрация никеля в растворе 0,25 г/л", "expect": [{"metric": "концентрация", "material": "никель", "phase": "раствор", "value_low": 250, "value_high": 250, "unit_canon": "mg_L", "unit_raw": "г/л"}]}
+{"text": "плотность тока 240 А/дм2 в советской практике", "expect": [{"metric": "плотность тока", "value_low": 24000, "value_high": 24000, "unit_canon": "A_m2", "unit_raw": "А/дм2"}]}
+{"text": "скорость циркуляции католита 20 л/мин", "expect": [{"metric": "скорость", "phase": "католит", "value_low": 1.2, "value_high": 1.2, "unit_canon": "m3_h", "unit_raw": "л/мин"}]}
+{"text": "S. 45–52 в журнале Цветные металлы, тираж 500", "expect": []}
+{"text": "концентрация сульфатов не более 300 mg/L", "expect": [{"metric": "концентрация", "material": "сульфат", "value_high": 300, "comparator": "<=", "unit_canon": "mg_L", "unit_raw": "mg/L"}]}
+{"text": "влажность концентрата не более 0,3 процента", "expect": [{"value_high": 0.3, "comparator": "<=", "unit_canon": "pct", "unit_raw": "процента"}]}
+{"text": "Fe <20 ppm в растворе", "expect": [{"material": "железо", "phase": "раствор", "value_high": 20, "comparator": "<", "unit_canon": "mg_L", "unit_raw": "ppm"}]}
+{"text": "содержание Fe 20 ppm в сухой соли", "expect": [{"metric": "содержание", "material": "железо", "value_low": 20, "value_high": 20, "comparator": "=", "unit_canon": "ppm", "unit_raw": "ppm"}]}
+{"text": "температура порядка 1200 °С", "expect": [{"metric": "температура", "value_low": 1200, "value_high": 1200, "comparator": "~", "unit_canon": "degC"}]}

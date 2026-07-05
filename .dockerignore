@@ -1,0 +1,43 @@
+# Корневые исключения ЯКОРЕНЫ (ведущий /), чтобы не задеть одноимённые каталоги
+# внутри frontend/src (features/export, src/tests и т.п.).
+/.git
+/.claude
+/llm_cache
+/new_module
+/update
+/export
+/docs
+/tests
+/scratch
+/golden
+.pytest_cache
+**/__pycache__
+**/*.pyc
+.DS_Store
+**/.DS_Store
+
+# frontend: node_modules и dev-сборки (dist собирается в stage 1)
+/frontend/node_modules
+/frontend/dist
+/frontend/test-results
+/frontend/playwright-report
+/frontend/e2e
+
+# сырой корпус и логи (граф едет дампом)
+/Источники информации
+/data/*.log
+/data/audit*.json
+/data/ocr_cache
+/data/*.png
+
+# build-time артефакты извлечения (в рантайме не читаются; граф — дампом)
+/artifacts/facts.jsonl
+/artifacts/edges.jsonl
+/artifacts/vision_facts.jsonl
+/artifacts/audit.jsonl
+/artifacts/*.dump
+
+# секреты
+/.env
+/frontend/.env
+/frontend/.env.production

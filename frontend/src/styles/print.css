@@ -1,0 +1,5 @@
+@media print {
+  aside, nav, header[class*="topbar"], button, [class*="queryCard"], [class*="answerAside"] { display: none !important; }
+  main, [class*="workspace"], [class*="answerMain"] { width: 100% !important; margin: 0 !important; padding: 0 !important; display: block !important; }
+  [class*="panel"] { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+}

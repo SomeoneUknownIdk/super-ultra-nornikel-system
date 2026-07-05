@@ -1,0 +1,10 @@
+# Файлы >100 МБ — лимит GitHub. Граф едет дампом в бандле/релизе.
+artifacts/neo4j.dump
+data/docs.text.jsonl
+# служебное
+__pycache__/
+*.pyc
+.env
+node_modules/
+frontend/dist/
+.DS_Store

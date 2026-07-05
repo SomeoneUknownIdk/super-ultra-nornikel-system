@@ -1,0 +1,9 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f5f7; --surface: #ffffff; --surface-soft: #f8f9fb; --surface-blue: #f2f6ff;
+  --text: #172033; --text-muted: #667085; --text-soft: #8b95a7; --border: #e2e6ed; --border-strong: #cfd5df;
+  --blue: #1d4ed8; --blue-hover: #1e40af; --blue-soft: #e9f0ff; --green: #087f5b; --green-soft: #e8f7f1;
+  --amber: #b45309; --amber-soft: #fff5df; --red: #c53030; --red-soft: #fff0f0; --purple: #6d28d9;
+  --shadow: 0 8px 28px rgb(31 41 55 / 7%); --radius-sm: 8px; --radius: 12px; --radius-lg: 16px;
+  --sidebar: 230px; --topbar: 68px; --mobile-nav: 66px; --content: 1440px;
+}

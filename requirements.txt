@@ -1,0 +1,37 @@
+# Run-time (то, что деплоят судьи) — чистый pip, кросс-платформенно.
+neo4j==5.28.1
+streamlit==1.40.2
+numpy==2.2.1
+# семантика — через RouterAI embeddings API (bge-m3, см. src/embed.py); локального torch НЕ нужно
+pyvis==0.3.2
+pymorphy3==2.0.4
+spacy==3.8.7
+rapidfuzz==3.10.1
+pyyaml==6.0.2
+requests==2.32.3
+# REST API для фронтенда (src/api.py)
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+# аутентификация: bcrypt-пароли + JWT-сессии (src/auth.py)
+bcrypt
+PyJWT
+# экспорт PDF с кириллицей (src/exports.py; шрифт DejaVu берётся из matplotlib)
+reportlab
+matplotlib
+# Build-time (извлечение из сырого корпуса) — опционально у судей:
+pymupdf==1.25.1
+python-docx==1.1.2
+python-pptx==1.0.2
+pandas==2.2.3
+openpyxl==3.1.5
+xlrd
+# тесты
+pytest
+# spaCy RU-модель ставится отдельно:
+#   python -m spacy download ru_core_news_sm
+
+# Внешние источники (src/external.py): headless-скрапинг CyberLeninka.
+# После pip: python -m playwright install chromium
+playwright==1.55.0

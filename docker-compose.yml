@@ -1,0 +1,59 @@
+# Прод-развёртывание одной командой: docker compose up -d --build → :8000
+# neo4j-init грузит дамп графа в volume (один раз), затем поднимаются neo4j и app.
+services:
+  neo4j-init:
+    image: neo4j:5.26.0
+    volumes:
+      - neo4j_data:/data
+      - ./artifacts:/artifacts:ro   # тут лежит neo4j.dump
+    entrypoint:
+      - bash
+      - -c
+      - |
+        if [ ! -f /data/.dump-loaded ] && [ -f /artifacts/neo4j.dump ]; then
+          echo "Загружаю дамп графа…"
+          neo4j-admin database load neo4j --from-path=/artifacts --overwrite-destination && \
+          touch /data/.dump-loaded && echo "Дамп загружен."
+        else
+          echo "Дамп уже загружен или отсутствует — пропуск."
+        fi
+
+  neo4j:
+    image: neo4j:5.26.0
+    container_name: task2-neo4j
+    depends_on:
+      neo4j-init:
+        condition: service_completed_successfully
+    environment:
+      NEO4J_AUTH: neo4j/task2password
+      NEO4J_server_memory_heap_max__size: 1G
+      NEO4J_server_memory_pagecache_size: 512M
+    ports:
+      - "7474:7474"   # браузер Neo4j; на публичном деплое можно убрать
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p task2password 'RETURN 1' || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+
+  app:
+    build: .
+    container_name: task2-app
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    env_file:                 # ROUTERAI_API_KEY, JWT_SECRET, ADMIN_PASSWORD
+      - path: .env            # required:false — валидно без .env; создайте из .env.example
+        required: false
+    environment:
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_USER: neo4j
+      NEO4J_PASS: task2password
+    ports:
+      - "8000:8000"           # UI + API на одном порту
+
+volumes:
+  neo4j_data:
